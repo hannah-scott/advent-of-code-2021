@@ -1,5 +1,4 @@
 from lib import *
-import time
 
 arr = file2arr("day-12.txt", lambda x: x.split('-'))
 
@@ -55,26 +54,25 @@ def findPaths(minorRule=False):
     paths = [[start]]
 
     while not isPathingFinished(paths):
-        for path in paths:
-            paths.remove(path)
-            end_point = path[-1]
-            if end_point == end:
-                finished.append(path)
-            else:
-                count = getNodeCounts(path)
-                for n in getNeighbours(end_point):
-                    if isValidUpdatedPath(n, count, minorRule=minorRule):
-                        paths.append(path + [n])
+        path = paths[-1]
+        paths.remove(path)
+        end_point = path[-1]
+        if end_point == end:
+            finished.append(path)
+        else:
+            count = getNodeCounts(path)
+            for n in getNeighbours(end_point):
+                if isValidUpdatedPath(n, count, minorRule=minorRule):
+                    paths.append(path + [n])
         
     return len(finished + paths)
 
+
 problem(1)
 
-start_time = time.time()
-print(findPaths(), "{:.4f}s".format((time.time() - start_time)))
+print(findPaths())
 
 problem(2)
 
-start_time = time.time()
-print(findPaths(minorRule=True), "{:.4f}s".format((time.time() - start_time)))
+print(findPaths(minorRule=True))
 
