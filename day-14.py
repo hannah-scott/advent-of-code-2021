@@ -19,6 +19,7 @@ def run_step(template, rules):
     out = ""
     lookup = [n[0] for n in rules]
 
+    # Get list of pairs in template
     for i in range(len(template) - 1):
         pairs.append(template[i:i+2])
 
@@ -59,8 +60,6 @@ problem(1)
 def run_steps(template, rules, n=10):
     for _ in range(n):
         template = run_step(template, rules)
-        # print(initialize_pair_count(template))
-    # print(get_letter_counts(template))
     values = get_letter_counts(template).values()
 
     return max(values) - min(values)
@@ -70,13 +69,6 @@ print(run_steps(template, rules, n=10), "{:.2f}s".format(time.time() - start))
 
 problem(2)
 
-def debug_val(pc, key):
-    if key in pc.keys():
-        val = pc[key]
-    else:
-        val = 0
-    return val
-
 def run_pair_count_step(pc, rules):
     keys = list(pc.keys())
     lookup = [n[0] for n in rules]
@@ -85,24 +77,13 @@ def run_pair_count_step(pc, rules):
         new[key] = pc[key]
     for key in keys:
         if key in [n[0] for n in rules]:
-            # print("* {} -> {}".format(key, rules[lookup.index(key)][1]))
             found = rules[lookup.index(key)][1]
 
-            val = debug_val(new, key[0] + found)
             new = add_to_count(key[0] + found, new, pc[key])
-            # print("* \t{}: {} -> {}".format(key[0] + found, val, new[key[0] + found]))
-
-
-            val = debug_val(new, found + key[1])
             new = add_to_count(found + key[1], new, pc[key])
-            # print("* \t{}: {} -> {}".format(found + key[1], val, new[found + key[1]]))
-
-            val = debug_val(new, key)
 
             new[key] -= pc[key]
             pc[key] = new[key]
-
-            # print("* \t{}: {} -> {}".format(key, val, new[key]))
     for key in keys:
         if new[key] == 0:
             new.pop(key)
@@ -128,7 +109,6 @@ def run_pair_count_steps(template, rules, n=10):
 
     for _ in range(n):
         pc = run_pair_count_step(pc, rules)
-        # print(pc)
     
     lc = get_lc_from_pc(pc)
 
@@ -137,9 +117,7 @@ def run_pair_count_steps(template, rules, n=10):
 
     for l in lc.keys():
         lc[l] = int(lc[l] / 2)
-
     
-    # print(lc)
     return max(lc.values()) - min(lc.values())
     
 start = time.time()
