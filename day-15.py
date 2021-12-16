@@ -1,6 +1,5 @@
 from lib import *
 import time
-import math
 
 arr = file2arr("day-15.txt", lambda x: [int(n) for n in x])
 
@@ -89,7 +88,8 @@ def get_risk(arr, path):
             risk += arr[p[1]][p[0]]
     return risk
 
-print(get_risk(arr, get_path(solution)), "{:.2f}s".format(time.time() - st))
+path = get_path(a_star_search(arr))
+print(get_risk(arr, path), "{:.2f}s".format(time.time() - st))
 
 problem(2)
 
@@ -110,4 +110,5 @@ def expand_arr(arr):
 expanded = expand_arr(arr)
 
 st = time.time()
-print(get_risk(expanded, get_path(a_star_search(expanded))), "{:.2f}s".format(time.time() - st))
+path = get_path(a_star_search(expanded))
+print(get_risk(expanded, path), "{:.2f}s".format(time.time() - st))
