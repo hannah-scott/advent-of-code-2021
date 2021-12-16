@@ -19,7 +19,6 @@ def print_grid(grid, charset=False):
                     string += "{} ".format(c)
         print(string)
 
-
 def file2arr(fname, fn=None):
     with open(fname, "r") as f:
         arr = [n.strip() for n in f.readlines()]
