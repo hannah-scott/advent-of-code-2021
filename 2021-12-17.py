@@ -1,6 +1,6 @@
 from lib import *
 
-arr = file2arr("day-17.txt", lambda x: x[13:].split(", "))
+arr = file2arr("2021-12-17.txt", lambda x: x[13:].split(", "))
 target = list(map(lambda x: range(int(x[2:].split("..")[0]), int(x[2:].split("..")[1]) + 1), arr[0]))
 
 # Pick one that works just to try to figure this out

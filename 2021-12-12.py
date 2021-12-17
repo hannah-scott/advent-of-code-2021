@@ -1,6 +1,6 @@
 from lib import *
 
-arr = file2arr("day-12.txt", lambda x: x.split('-'))
+arr = file2arr("2021-12-12.txt", lambda x: x.split('-'))
 
 start = 'start'
 end = 'end'

@@ -2,7 +2,7 @@ from lib import *
 
 problem(1)
 
-arr = file2arr("day-11.txt", lambda x: [int(n) for n in x])
+arr = file2arr("2021-12-11.txt", lambda x: [int(n) for n in x])
 
 def get_neighbours(arr, coords):
     x = coords[0]
@@ -75,7 +75,7 @@ print(run_steps(arr, 100))
 problem(2)
 
 # Reset arr, since we're updating it
-arr = file2arr("day-11.txt", lambda x: [int(n) for n in x])
+arr = file2arr("2021-12-11.txt", lambda x: [int(n) for n in x])
 
 def is_all_zeros(arr):
     for j in range(len(arr)):

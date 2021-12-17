@@ -1,6 +1,6 @@
 from lib import *
 
-arr = file2arr("day-10.txt")
+arr = file2arr("2021-12-10.txt")
 
 problem(1)
 

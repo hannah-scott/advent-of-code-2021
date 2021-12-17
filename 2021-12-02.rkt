@@ -9,7 +9,7 @@
 (define (read-into-list file)
   (read-into-list-iter file '()))
 
-(define instructions (call-with-input-file "day-2.txt" read-into-list))
+(define instructions (call-with-input-file "2021-12-02.txt" read-into-list))
 
 ; Problem 1
 (displayln "Problem 1:")

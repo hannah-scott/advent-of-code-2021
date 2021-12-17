@@ -59,7 +59,7 @@
 (define (read-into-list file)
   (read-into-list-iter file '()))
 
-(define strings (call-with-input-file "day-3.txt" read-into-list))
+(define strings (call-with-input-file "2021-12-03.txt" read-into-list))
 
 (* (bin-string-to-dec (determine-gamma strings))
    (bin-string-to-dec (determine-epsilon strings)))
