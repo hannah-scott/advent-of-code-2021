@@ -3,16 +3,21 @@ def problem(n):
     print("Problem {}".format(n))
     print("-" * 20)
 
-def print_grid(grid, dot = False):
+def print_grid(grid, charset=False):
     for row in grid:
         string = ""
         for c in row:
-            if c == 0 and dot == True:
-                string += ". "
+            if charset:
+                if c == 0:
+                    string += "{}".format(charset[0])
+                else:
+                    string += "{}".format(charset[1])
             else:
-                string += "{} ".format(c)
+                if c == 0:
+                    string += ". "
+                else:
+                    string += "{} ".format(c)
         print(string)
-
 
 def file2arr(fname, fn=None):
     with open(fname, "r") as f:
